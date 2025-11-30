@@ -2,7 +2,7 @@
 # 🐳 **Trabalho – Docker e Microsserviços**
 
 **Aluno:** Gabriel Garcia
-**Disciplina:** Containers, Docker e Microsserviços
+**Disciplina:** Fundamentos de Computação Concorrente, Paralela e Distribuída
 
 ---
 
