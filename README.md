@@ -195,7 +195,7 @@ http://localhost:5000/set
 (Criando o usuário)
 > curl -X POST -H "Content-Type: application/json" \
 -d '{"name":"Gabriel", "age":22}' \
-http://localhost:5000/add_nome/<nome>
+http://localhost:5000/add_nome/nome
 
 (Listar usuários)
 > curl http://localhost:5000/users
