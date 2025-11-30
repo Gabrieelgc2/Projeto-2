@@ -104,8 +104,8 @@ cd desafio-1
 bash desafio1.sh
 ```
 O script sobe os containers conectados na mesma rede, além de demonstrar os logs do flask.
-![Desafio 1](images/desafio-1.png)
-![Desafio 1 Docker desktop](images/desafio-1dockerdesktop.png)
+![Desafio 1](imagens/desafio-1.png)
+![Desafio 1 Docker desktop](imagens/desafio-1dockerdesktop.png)
 
 ---
 
@@ -147,7 +147,7 @@ curl http://localhost:5000/get/nome
 ```
 
 ---
-![Desafio 2](images/desafio-2.png)
+![Desafio 2](imagens/desafio-2.png)
 
 
 # 🧩 **Desafio 3 — Docker Compose Orquestrando Serviços**
@@ -200,7 +200,7 @@ http://localhost:5000/add_nome/<nome>
 (Listar usuários)
 > curl http://localhost:5000/users
 
-![Desafio 3](images/desafio-3logs.png)
+![Desafio 3](imagens/desafio-3logs.png)
 ---
 
 # 🧩 **Desafio 4 — Microsserviços Independentes**
@@ -258,7 +258,7 @@ Pedidos do usuário 1:
 curl http://localhost:5002/servico/orders/1
 ```
 
-![Desafio 4](images/desafio-4logs.png)
+![Desafio 4](imagens/desafio-4logs.png)
 ---
 
 
@@ -319,7 +319,7 @@ Pedidos:
 - Utilizar terminal bash
 curl http://localhost:8080/api/orders/1
 ```
-![Desafio 5 Curl](images/desafio-5curl.png)
-![Desafio 5 Log](images/desafio-5log.png)
-![Desafio 5 Log](images/desafio-5log2.png)
+![Desafio 5 Curl](imagens/desafio-5curl.png)
+![Desafio 5 Log](imagens/desafio-5log.png)
+![Desafio 5 Log](imagens/desafio-5log2.png)
 ---
