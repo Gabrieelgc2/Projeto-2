@@ -116,11 +116,11 @@ Demonstrar persistência com **volumes Docker** utilizando **Redis**.
 
 ## 🏗️ Arquitetura
 
-* Container roda um app Flask que grava dados em `mysqlite.db`.
+* Container roda um app Flask que grava dados em `Redis`.
 * O volume externo mantém o arquivo mesmo após remover o container.
 
 ```
-volume: ./data/mysqlite:/data/
+volume: redis_data:/data redis:alpine
 ```
 
 ## ▶️ Como executar
