@@ -127,8 +127,7 @@ volume: ./data/mysqlite:/data/
 
 ```bash
 cd desafio-2
-docker build -t sqlite-app .
-docker run -v ./data/mysqlite:/data -p 5000:5000 sqlite-app
+bash desafio2.sh
 ```
 
 ## 🧪 Testes
@@ -136,16 +135,15 @@ docker run -v ./data/mysqlite:/data -p 5000:5000 sqlite-app
 Salvar um usuário:
 
 ```bash
-curl http://localhost:5000/add_user/Gabriel
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"key":"nome", "value":"Gabriel"}' \
+    http://localhost:5000/set
 ```
 
-Remover o container:
-
+Pegar o usuário:
 ```bash
-docker rm -f sqlite-app
+curl http://localhost:5000/get/nome
 ```
-
-Subir novamente — o usuário ainda estará lá.
 
 ---
 
@@ -169,7 +167,7 @@ Criar uma aplicação com 3 serviços:
 
 ```bash
 cd desafio-3
-docker-compose up --build
+docker compose up --build
 ```
 
 ## 🧪 Testes
