@@ -126,7 +126,7 @@ volume: ./data/mysqlite:/data/
 ## ▶️ Como executar
 
 ```bash
-cd desafio2
+cd desafio-2
 docker build -t sqlite-app .
 docker run -v ./data/mysqlite:/data -p 5000:5000 sqlite-app
 ```
@@ -219,7 +219,7 @@ http://user-service:5001/servico/users
 ## ▶️ Como executar
 
 ```bash
-cd desafio4
+cd desafio-4
 docker-compose up --build
 ```
 
@@ -277,8 +277,8 @@ E ele redireciona internamente:
 ## ▶️ Como rodar
 
 ```bash
-cd desafio5
-docker-compose up --build
+cd desafio-5
+docker compose up --build
 ```
 
 ## 🧪 Testes
@@ -286,12 +286,14 @@ docker-compose up --build
 Listar usuários:
 
 ```bash
+- Utilizar terminal bash
 curl http://localhost:8080/api/users
 ```
 
 Pedidos:
 
 ```bash
+- Utilizar terminal bash
 curl http://localhost:8080/api/orders/1
 ```
 
