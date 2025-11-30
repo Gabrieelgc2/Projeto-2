@@ -1,7 +1,30 @@
 from flask import Flask, request, jsonify
 import redis
 import os
+import sqlite3
 app = Flask(__name__)
+
+db_path = os.getenv("SQLITE_PATH", "/data/sqlite/mydb.sqlite3") # Caminho do banco de dados SQLITE
+
+os.makedirs("/data/sqlite", exist_ok=True) # Criação do diretório para o banco de dados SQLITE
+
+def init_db(): # Criação do banco de dados SQLITE
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS usuarios (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT NOT NULL
+        );
+    """)
+    conn.commit()
+    conn.close()
+
+init_db()
+
+
+def get_connection(): # Função para conectar ao banco de dados SQLITE
+    return sqlite3.connect(db_path)
 
 redis_host = os.getenv("REDIS_HOST", "localhost")
 r = redis.Redis(host=redis_host, port=6379, decode_responses=True)
