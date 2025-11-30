@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ../desafio-1
+    container_name: flask
+    environment:
+      - REDIS_HOST=redis
+      - SQLITE_PATH=/data/sqlite/mydb.sqlite3
+    ports:
+      - "5000:5000"
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - flask_redis_net
+    volumes:
+      - sqlite_data:/data/sqlite
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    networks:
+      - flask_redis_net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+networks:
+  flask_redis_net:
+    name: flask_redis_net
+
+volumes:
+  sqlite_data:

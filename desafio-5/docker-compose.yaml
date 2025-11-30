@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    networks:
+      - micro_net
+
+  order-service:
+    build: ./order_service
+    container_name: order-service
+    depends_on:
+      - user-service
+    networks:
+      - micro_net
+
+  gateway:
+    build: ./gateway
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - user-service
+      - order-service
+    networks:
+      - micro_net
+
+networks:
+  micro_net:
+    driver: bridge
