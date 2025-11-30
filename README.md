@@ -170,8 +170,7 @@ Criar uma aplicação com 3 serviços:
 
 ```bash
 cd desafio-3
-docker rm -f flask redis
-docker network rm flask_redis_net
+bash desafio3.sh
 docker compose up --build
 ```
 
@@ -301,7 +300,7 @@ E ele redireciona internamente:
 
 ```bash
 cd desafio-5
-desafio5.sh
+bash desafio5.sh
 docker compose up --build
 ```
 
