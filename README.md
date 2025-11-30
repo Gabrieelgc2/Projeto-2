@@ -101,10 +101,11 @@ Criar **dois containers** que se comunicam via **rede Docker customizada**:
 
 ```bash
 cd desafio-1
-./desafio1.sh
+bash desafio1.sh
 ```
-
 O script sobe os containers conectados na mesma rede, além de demonstrar os logs do flask.
+![Desafio 1](images/desafio-1.png)
+![Desafio 1 Docker desktop](images/desafio-1dockerdesktop.png)
 
 ---
 
@@ -146,6 +147,8 @@ curl http://localhost:5000/get/nome
 ```
 
 ---
+![Desafio 2](images/desafio-2.png)
+
 
 # 🧩 **Desafio 3 — Docker Compose Orquestrando Serviços**
 
@@ -167,6 +170,8 @@ Criar uma aplicação com 3 serviços:
 
 ```bash
 cd desafio-3
+docker rm -f flask redis
+docker network rm flask_redis_net
 docker compose up --build
 ```
 
@@ -174,10 +179,28 @@ docker compose up --build
 
 Listar usuários:
 
-```bash
-curl http://localhost:8080/users
-```
+- Verifica se todos os comandos estão funcionandos:
+> docker ps
 
+- Testando o Redis (Cache):
+(Salvando um valor no Redis via Flask)
+> curl -X POST -H "Content-Type: application/json" \
+-d '{"key":"nome", "value":"Gabriel"}' \
+http://localhost:5000/set
+
+(Buscando o valor)
+> curl http://localhost:5000/get/nome
+
+- Testando o SQLITE
+(Criando o usuário)
+> curl -X POST -H "Content-Type: application/json" \
+-d '{"name":"Gabriel", "age":22}' \
+http://localhost:5000/add_nome/<nome>
+
+(Listar usuários)
+> curl http://localhost:5000/users
+
+![Desafio 3](images/desafio-3logs.png)
 ---
 
 # 🧩 **Desafio 4 — Microsserviços Independentes**
@@ -235,7 +258,9 @@ Pedidos do usuário 1:
 curl http://localhost:5002/servico/orders/1
 ```
 
+![Desafio 4](images/desafio-4logs.png)
 ---
+
 
 # 🧩 **Desafio 5 — Microsserviços com API Gateway**
 
@@ -294,5 +319,7 @@ Pedidos:
 - Utilizar terminal bash
 curl http://localhost:8080/api/orders/1
 ```
-
+![Desafio 5 Curl](images/desafio-5curl.png)
+![Desafio 5 Log](images/desafio-5log.png)
+![Desafio 5 Log](images/desafio-5log2.png)
 ---

@@ -42,6 +42,23 @@ def get_value(key):
         return jsonify({"key": key, "value": value})
     return jsonify({"error": "Chave não encontrada"}), 404
 
+@app.route("/add_user/<nome>", methods=["POST"]) # SQLITE
+def add_user(nome):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO usuarios (nome) VALUES (?)", (nome,))
+    conn.commit()
+    conn.close()
+    return jsonify({"message": "Usuário salvo!", "nome": nome})
+
+@app.route("/users", methods=["GET"]) # SQLITE
+def list_users():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM usuarios")
+    rows = cursor.fetchall()
+    conn.close()
+    return jsonify(rows)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
