@@ -301,6 +301,7 @@ E ele redireciona internamente:
 
 ```bash
 cd desafio-5
+desafio5.sh
 docker compose up --build
 ```
 
